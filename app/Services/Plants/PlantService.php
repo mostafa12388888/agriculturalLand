@@ -6,6 +6,7 @@ use App\Exceptions\CanNotDefined;
 use App\Models\Plant;
 use App\Models\Plant\Plant as PlantPlant;
 use App\Repositories\Plants\PlantRepository;
+use Illuminate\Support\Facades\Auth;
 
 use function PHPUnit\Framework\isNull;
 
@@ -13,7 +14,9 @@ class PlantService
 {
     public function getPlant():mixed
     {
-        $plant=PlantPlant::where("user_id",Null)->orWhere("user_id",auth()->id())->get();
+
+        $plant=PlantPlant::where("user_id",null)->orWhere("user_id",Auth::guard("api")->id())->get();
+
         return $plant;
     }
     public function storePlan(array $plantData):mixed

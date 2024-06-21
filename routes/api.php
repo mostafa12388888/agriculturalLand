@@ -32,7 +32,7 @@ Route::group([], function () {
 
 });
 
-Route::middleware(['auth:api'])->group(function () {
+Route::middleware(['api'])->group(function () {
     // Passport routes...
     Route::group(['prefix' => 'plant'], function () {
         Route::get("/", [PlantController::class, "index"]);

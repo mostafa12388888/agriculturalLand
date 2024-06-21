@@ -28,8 +28,9 @@ class PlantController extends Controller
      *
      * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index()
     {
+        return( $this->service->getPlant());
         return $this->response($this->service->getPlant(),HttpStatusCodeEnum::OK);
     }
 
